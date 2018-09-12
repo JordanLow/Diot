@@ -1,1 +1,10 @@
-data/*
+# Logs
+logs
+*.log
+npm-debug.log*
+
+data/
+config.json
+
+# Dependency directories
+node_modules/

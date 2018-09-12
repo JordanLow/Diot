@@ -66,10 +66,6 @@ const init = async () => {
 			console.log(`Unable to load command ${f}: ${e}`)
 		}
 	});
-	
-	// Load RPG
-	
-	client
 
 	// Then we load events, which will include our message and ready event.
 	const evtFiles = await readdir("./events/");

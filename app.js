@@ -11,6 +11,7 @@ const { promisify } = require("util");
 const client = new Discord.Client();
 
 // Here we load the config.json file that contains our token and our prefix values. 
+// If loading this from github, the config file is gitignored as the token is within. Copy in an appropriate file and title it "config.json".
 client.config = require("./config.json");
 // config.token contains the bot's token
 // config.prefix contains the message prefix.

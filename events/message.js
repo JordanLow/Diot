@@ -3,6 +3,7 @@ module.exports = (client, message) => {
 	// and not get into a spam loop (we call that "botception").
 	if (message.author.bot) return;
 	/* if (message.guild) {
+		// Code for what was meant to be server points, ultimately served no use and is currently out of service until it is needed
 		let key = `${message.guild.id}-${message.author.id}`;
 		console.log(client.points.get(key));
 		if (!client.points.get(key)) {
@@ -21,8 +22,13 @@ module.exports = (client, message) => {
 		}
 		client.points.set(key, curLevel, "level");
 	} */
+	
 
-	// Also good practice to ignore any message that does not start with our prefix,
+	/*
+	Final place messages are read before non-prefix messages are filtered out. Add any non-prefix functionality here.
+	*/
+
+	// Also good practice to ignore any message that does not start with our prefix ($),
 	// which is set in the configuration file.
 	if (message.content.indexOf(client.settings.get('prefix')) !== 0) return;
 
@@ -32,10 +38,7 @@ module.exports = (client, message) => {
 	// args = ["Is", "this", "the", "real", "life?"]
 	const args = message.content.slice(client.settings.get('prefix').length).trim().split(/ +/g);
 	const command = args.shift().toLowerCase();
-	
-	if (command == "jordansux") {
-		return message.channel.send("Campion Sux");
-	}
+
 	// Check whether the command, or alias, exist in the collections defined
 	// in app.js.
 	const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));

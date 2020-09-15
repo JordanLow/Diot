@@ -38,7 +38,7 @@ module.exports = {
 
 		if (command === "say") {
 			const sayMessage = args.join(" ");
-			message.channel.send(sayMessage);
+			return message.channel.send(sayMessage);
 		}
 	}
 }

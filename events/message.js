@@ -1,6 +1,5 @@
 module.exports = (client, message) => {
-	// It's good practice to ignore other bots. This also makes your bot ignore itself
-	// and not get into a spam loop (we call that "botception").
+	// Botception bad
 	if (message.author.bot) return;
 	/* if (message.guild) {
 		// Code for what was meant to be server points, ultimately served no use and is currently out of service until it is needed
@@ -23,31 +22,25 @@ module.exports = (client, message) => {
 		client.points.set(key, curLevel, "level");
 	} */
 	
+	// Former points code, currently disabled
+	
 
 	/*
-	Final place messages are read before non-prefix messages are filtered out. Add any non-prefix functionality here.
+	Non-prefix messages are filtered out after this point. Add any non-prefix functionality here.
 	*/
 
-	// Also good practice to ignore any message that does not start with our prefix ($),
-	// which is set in the configuration file.
 	if (message.content.indexOf(client.settings.get('prefix')) !== 0) return;
 
-	// Here we separate our "command" name, and our "arguments" for the command.
-	// e.g. if we have the message "+say Is this the real life?" , we'll get the following:
-	// command = say
-	// args = ["Is", "this", "the", "real", "life?"]
+	// Break message into Command and Arguments
 	const args = message.content.slice(client.settings.get('prefix').length).trim().split(/ +/g);
 	const command = args.shift().toLowerCase();
 
-	// Check whether the command, or alias, exist in the collections defined
-	// in app.js.
+	// Check whether the command or alias exists in the Command Handler
 	const cmd = client.commands.get(command) || client.commands.get(client.aliases.get(command));
-	// using this const varName = thing OR otherthign; is a pretty efficient
-	// and clean way to grab one of 2 values!
+
 	if (!cmd) return;
 
-	// Some commands may not be useable in DMs. This check prevents those commands from running
-	// and return a friendly error message.
+	// Return an error if DM-unavailable command is attempted in DMs.
 	if (cmd && !message.guild && cmd.conf.guildOnly) { 
 		return message.channel.send("This command is unavailable via private message. Please run this command in a guild.");
 	}
@@ -56,6 +49,7 @@ module.exports = (client, message) => {
 	while (args[0] && args[0][0] === "-") {
 		message.flags.push(args.shift().slice(1));
 	}
+	// Command flag functionality. Currently un-used, leaving here for future reference.
 
 	cmd.run(client, message, args);
 };

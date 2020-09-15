@@ -1,6 +1,6 @@
 module.exports = {
 	run: function(client, message, args) {
-		
+		/*
 		const command = args.shift().toLowerCase();
 		
 		if (command === "get") {
@@ -28,7 +28,8 @@ module.exports = {
 				embed.addField(client.users.get(data.user).tag, `${data.points} points (level ${data.level})`);
 			}
 				return message.channel.send({embed});
-		}
+		}*/
+		return console.log("Points are disabled currently!");
 	}
 }
 

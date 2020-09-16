@@ -1,5 +1,10 @@
 module.exports = {
 	run: function(client, message, args) {
+		
+		if (args.length == 0) {
+			return message.channel.send(`\`Usage: morse [encode/decode] [message]\` \n More detailed help pages in the works!`);
+		}
+		
 		const command = args.shift().toLowerCase();
 		const alphabet = {  
 			"-----":"0",

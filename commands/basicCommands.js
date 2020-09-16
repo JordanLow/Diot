@@ -1,6 +1,10 @@
 module.exports = {
 	run: function(client, message, args) {
 		
+		if (args.length == 0) {
+			return message.channel.send(`\`Usage: bcommand [command] [arguments]\` \n More detailed help pages in the works!`);
+		}
+		
 		const command = args.shift().toLowerCase();
 
 		if (command === "8ball" || command === "randans") {
@@ -46,11 +50,11 @@ module.exports = {
 module.exports.conf = {
 	enabled: true,
 	guildOnly: false,
-	aliases: ['$']
+	aliases: ['$', 'bcommand']
 };
 
 module.exports.help = {
-	name: "bcommand",
+	name: "basicCommands",
 	category: "Miscelaneous",
 	description: "Bunch of basic commands",
 	usage: "bcommand [command] [arguments]",

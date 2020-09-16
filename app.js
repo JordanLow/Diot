@@ -26,19 +26,19 @@ client.tchannels = new Discord.Collection();
 client.on("ready", () => {
 	// Sets the bot profile upon successful login
 	console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`); 
-	client.user.setActivity(`${client.guilds.cache.size}x taking care of me`);
+	client.user.setActivity(`${client.guilds.cache.size}x servers taking care of me`);
 });
 
 client.on("guildCreate", guild => {
 	// Updates the bot profile upon joining a server
 	console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
-	client.user.setActivity(`${client.guilds.cache.size}x taking care of me`);
+	client.user.setActivity(`${client.guilds.cache.size}x servers taking care of me`);
 });
 
 client.on("guildDelete", guild => {
 	// Updates the bot profile upon leaving a server
 	console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
-	client.user.setActivity(`${client.guilds.cache.size}x taking care of me`);
+	client.user.setActivity(`${client.guilds.cache.size}x servers taking care of me`);
 });
 
 const readdir = promisify(fs.readdir);

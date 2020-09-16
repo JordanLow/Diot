@@ -46,7 +46,7 @@ module.exports = {
 module.exports.conf = {
 	enabled: true,
 	guildOnly: false,
-	aliases: []
+	aliases: ['$']
 };
 
 module.exports.help = {

@@ -12,14 +12,15 @@ client.config = require("./config.json");
 // config.token contains the bot's token
 // config.prefix contains the message prefix.
 
-// Boot up the Command Handler and bot settings.
+// Boot up the Command Handler and configure bot settings.
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 client.settings = new Discord.Collection();
-
-// Initialize some variables and settings
 client.settings.set('prefix', client.config.prefix);
+
+// Initialize variables
 client.game = null;
+client.tchannels = new Discord.Collection();
 
 
 client.on("ready", () => {
@@ -53,7 +54,6 @@ const init = async () => {
 			if (props.init) {
 				props.init(client);
 			}
-			// Run any needed initialization upon command loading, currently un-used. Leaving this here for future reference.
 
 			client.commands.set(props.help.name, props);
 			props.conf.aliases.forEach(alias => {

@@ -8,15 +8,15 @@ module.exports = {
 		const command = args.shift().toLowerCase();
 		
 		if (command === 'ctc') {
-			var timer1 = parseInt(args.shift());
-			var timer2 = parseInt(args.shift());
-			var name = args.shift();
-			var dserver = message.guild;
-			var options = {};
+			let timer1 = parseInt(args.shift());
+			let timer2 = parseInt(args.shift());
+			let name = args.shift();
+			let dserver = message.guild;
+			let options = {};
 			
 			options.type = args.shift().toLowerCase();
 
-			var category = false;
+			let category = false;
 			if (args.length > 0) {
 				category = args.join(' ').toLowerCase();
 			}
@@ -26,7 +26,7 @@ module.exports = {
 				async (child) => {
 					client.tchannels.set(name, child);
 					if (category) {
-						var channels = dserver.channels.cache;
+						let channels = dserver.channels.cache;
 						if (!channels.find( channel => channel.type === 'category' && channel.name.toLowerCase() === category )) {
 							await dserver.channels.create(category, { type: 'category' }).then( cat => client.tchannels.set(category, cat) ).catch(console.error);
 						}
@@ -40,14 +40,14 @@ module.exports = {
 		}
 		
 		if (command === 'ct') {
-			var timer = parseInt(args.shift());
-			var name = args.shift();
-			var dserver = message.guild;
-			var options = {};
+			let timer = parseInt(args.shift());
+			let name = args.shift();
+			let dserver = message.guild;
+			let options = {};
 			
 			options.type = args.shift().toLowerCase();
 
-			var category = false;
+			let category = false;
 			if (args.length > 0) {
 				category = args.join(' ').toLowerCase();
 			}
@@ -69,14 +69,14 @@ module.exports = {
 		}
 		
 		if (command === "tc") {
-			var timer = parseInt(args.shift());
-			var name = args.shift();
-			var dserver = message.guild;
-			var options = {};
+			let timer = parseInt(args.shift());
+			let name = args.shift();
+			let dserver = message.guild;
+			let options = {};
 			
 			options.type = args.shift().toLowerCase();
 
-			var category = false;
+			let category = false;
 			if (args.length > 0) {
 				category = args.join(' ').toLowerCase();
 			}
@@ -101,13 +101,13 @@ module.exports = {
 
 		if (command === "create") {
 
-			var name = args.shift();
-			var dserver = message.guild;
-			var options = {};
+			let name = args.shift();
+			let dserver = message.guild;
+			let options = {};
 			
 			options.type = args.shift().toLowerCase();
 
-			var category = false;
+			let category = false;
 			if (args.length > 0) {
 				category = args.join(' ').toLowerCase();
 			}
@@ -116,7 +116,7 @@ module.exports = {
 			.then(
 				async (child) => {
 					if (category) {
-						var channels = dserver.channels.cache;
+						let channels = dserver.channels.cache;
 						if (!channels.find( channel => channel.type === 'category' && channel.name.toLowerCase() === category )) {
 							await dserver.channels.create(category, { type: 'category' }).then(console.log).catch(console.error);
 						}
@@ -130,10 +130,10 @@ module.exports = {
 		}
 		
 		if (command === "delete") {
-			var name = args.shift().toLowerCase();
-			var dserver = message.guild;
-			var channels = dserver.channels.cache;
-			var category = false;
+			let name = args.shift().toLowerCase();
+			let dserver = message.guild;
+			let channels = dserver.channels.cache;
+			let category = false;
 			if (args.length > 0) {
 				category = args.join(' ').toLowerCase();
 			}
